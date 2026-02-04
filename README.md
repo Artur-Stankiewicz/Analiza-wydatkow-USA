@@ -33,8 +33,9 @@ Key findings:
 <p align="center">
   <img src="Wykresy/Wydatki.png" width="800" title="Main Expenditure Analysis">
 </p>
-* **Wealth inequality**: housing and healthcare expenditures are the primary drivers for inequality. The Lorenz Curve, which illustrates the wealth distribution in USA, supports that statement.
+
+**Wealth inequality**: housing and healthcare expenditures are the primary drivers for inequality. The Lorenz Curve, which illustrates the wealth distribution in USA, supports that statement.
 <p align="center">
-  <img src="Lorenz/RDO.png" width="800" title="Main Expenditure Analysis">
+  <img src="Wykresy/Lorenz.png" width="800" title="Main Expenditure Analysis">
 </p>
 
