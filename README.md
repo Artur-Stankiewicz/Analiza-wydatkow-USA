@@ -1,5 +1,27 @@
 # Analiza-wydatkow-USA
+## Spis treści
+* [Opis](#Opis)
+* [Użyte biblioteki Python](#Użyte-biblioteki-Python)
+* [Dane](#Dane)
+* [Analiza](#Analiza)
+* [Wyniki](#Wyniki)
+
 ## Opis
 Projekt dotyczył porównania struktury wydatków oraz dochodów w poszczególnych stanach USA oraz na związane z tym nierówności pomiędzy stanami o wysokim a niskim poziomie rozporządzalnego dochodu osobistego.
+## Użyte bibliotki Python
+W celu analizy wykorzystaliśmy MS Excel oraz biblioteki takie jak:
+* Pandas
+* Numpy
+* Matplotlib
+* Seaborn
+Jeśli brakuje Ci którejś z bibliotek, wystarczy w Jupyter Notebook
+```
+!pip install pandas numpy matplotlib seaborn
+```
+## Dane
+Użyte dane pochodzą ze strony The Bureau of Economic Analysis (BEA)
+* [Wydatki USA](https://apps.bea.gov/itable/?ReqID=70&step=1&_gl=1*85fq81*_ga*MTY3NzgyODgwOC4xNzM4ODYzNjI0*_ga_J4698JNNFT*MTczODg2NzU4Ny4yLjEuMTczODg2OTY2Mi40Mi4wLjA.#eyJhcHBpZCI6NzAsInN0ZXBzIjpbMSwyOSwyNSwzMSwyNiwyNywzMF0sImRhdGEiOltbIlRhYmxlSWQiLCI2MDAiXSxbIk1ham9yX0FyZWEiLCIwIl0sWyJTdGF0ZSIsWyIwIl1dLFsiQXJlYSIsWyJYWCJdXSxbIlN0YXRpc3RpYyIsWyI0IiwiNSIsIjYiLCI3Il1dLFsiVW5pdF9vZl9tZWFzdXJlIiwiTGV2ZWxzIl0sWyJZZWFyIixbIjIwMjMiLCIyMDIyIiwiMjAyMSIsIjIwMjAiLCIyMDE5IiwiMjAxOCIsIjIwMTciLCIyMDE2IiwiMjAxNSIsIjIwMTQiLCIyMDEzIiwiMjAxMiJdXSxbIlllYXJCZWdpbiIsIi0xIl0sWyJZZWFyX0VuZCIsIi0xIl1dfQ==)
+* [Rozkład dochodów w USA](https://apps.bea.gov/iTable/?reqid=19&step=2&isuri=1&categories=survey&_gl=1*1b47ue7*_ga*MTY3NzgyODgwOC4xNzM4ODYzNjI0*_ga_J4698JNNFT*MTczODg2NzU4Ny4yLjEuMTczODg2NzkzNS4xNS4wLjA.#eyJhcHBpZCI6MTksInN0ZXBzIjpbMSwyLDMsM10sImRhdGEiOltbImNhdGVnb3JpZXMiLCJTdXJ2ZXkiXSxbIk5JUEFfVGFibGVfTGlzdCIsIjQyOSJdLFsiRmlyc3RfWWVhciIsIjIwMTIiXSxbIkxhc3RfWWVhciIsIjIwMjMiXSxbIlNjYWxlIiwiMCJdLFsiU2VyaWVzIiwiQSJdXX0=)
+* [Rozporządzalny dochód osobisty dla poszczególnych stanów w USA](https://apps.bea.gov/itable/?ReqID=70&step=1&_gl=1*85fq81*_ga*MTY3NzgyODgwOC4xNzM4ODYzNjI0*_ga_J4698JNNFT*MTczODg2NzU4Ny4yLjEuMTczODg2OTY2Mi40Mi4wLjA.#eyJhcHBpZCI6NzAsInN0ZXBzIjpbMSwyOSwyNSwzMSwyNiwyNywzMF0sImRhdGEiOltbIlRhYmxlSWQiLCI2MDAiXSxbIk1ham9yX0FyZWEiLCIwIl0sWyJTdGF0ZSIsWyIwIl1dLFsiQXJlYSIsWyIwMTAwMCIsIjAyMDAwIiwiMDQwMDAiLCIwNTAwMCIsIjA2MDAwIiwiMDgwMDAiLCIwOTAwMCIsIjEwMDAwIiwiMTEwMDAiLCIxMjAwMCIsIjEzMDAwIiwiMTUwMDAiLCIxNjAwMCIsIjE3MDAwIiwiMTgwMDAiLCIxOTAwMCIsIjIwMDAwIiwiMjEwMDAiLCIyMjAwMCIsIjIzMDAwIiwiMjQwMDAiLCIyNTAwMCIsIjI2MDAwIiwiMjcwMDAiLCIyODAwMCIsIjI5MDAwIiwiMzAwMDAiLCIzMTAwMCIsIjMyMDAwIiwiMzMwMDAiLCIzNDAwMCIsIjM1MDAwIiwiMzYwMDAiLCIzNzAwMCIsIjM4MDAwIiwiMzkwMDAiLCI0MDAwMCIsIjQxMDAwIiwiNDIwMDAiLCI0NDAwMCIsIjQ1MDAwIiwiNDYwMDAiLCI0NzAwMCIsIjQ4MDAwIiwiNDkwMDAiLCI1MDAwMCIsIjUxMDAwIiwiNTMwMDAiLCI1NDAwMCIsIjU1MDAwIiwiNTYwMDAiXV0sWyJTdGF0aXN0aWMiLFsiMTEiXV0sWyJVbml0X29mX21lYXN1cmUiLCJMZXZlbHMiXSxbIlllYXIiLFsiMjAyMyIsIjIwMjIiLCIyMDIxIiwiMjAyMCIsIjIwMTkiLCIyMDE4IiwiMjAxNyIsIjIwMTYiLCIyMDE1IiwiMjAxNCIsIjIwMTMiLCIyMDEyIl1dLFsiWWVhckJlZ2luIiwiLTEiXSxbIlllYXJfRW5kIiwiLTEiXV19)
 
-## Użyte zbiory danych pochodzą z The Bureau of Economic Analysis (BEA). Link do poszczególnych danych znajduje się w notebooku.
+## Analiza
