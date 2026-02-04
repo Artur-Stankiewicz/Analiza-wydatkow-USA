@@ -1,27 +1,28 @@
-# Analiza-wydatkow-USA
-## Spis treści
-* [Opis](#Opis)
-* [Użyte biblioteki Python](#Użyte-biblioteki-Python)
-* [Dane](#Dane)
-* [Analiza](#Analiza)
-* [Wyniki](#Wyniki)
-
-## Opis
-Projekt dotyczył porównania struktury wydatków oraz dochodów w poszczególnych stanach USA oraz na związane z tym nierówności pomiędzy stanami o wysokim a niskim poziomie rozporządzalnego dochodu osobistego.
-## Użyte bibliotki Python
-W celu analizy wykorzystaliśmy MS Excel oraz biblioteki takie jak:
+# Expenditures in USA - analysis
+## Table of contents
+* [Description](#Description)
+* [Technologies](#Technologies)
+* [Installation](#Installation)
+* [Data](#Data)
+* [Results](#Results)
+## Description
+This project compares structure of expenditures and incomes across selected US states. It focuses on analysing the inequalities between states with high and low personal disposable income. The analysis is based on Python script which you can run in your own Jupyter Notebook.
+## Technologies
+To analyse, we used MS Excel and the following Python libraries:
 * Pandas
 * Numpy
 * Matplotlib
 * Seaborn
-Jeśli brakuje Ci którejś z bibliotek, wystarczy w Jupyter Notebook
+## Installation
+If it's your first time using Python in data analysis and visualisation, you can install the required libraries by running this command in your Jupyter Notebook:
 ```
 !pip install pandas numpy matplotlib seaborn
 ```
-## Dane
-Użyte dane pochodzą ze strony The Bureau of Economic Analysis (BEA)
-* [Wydatki USA](https://apps.bea.gov/itable/?ReqID=70&step=1&_gl=1*85fq81*_ga*MTY3NzgyODgwOC4xNzM4ODYzNjI0*_ga_J4698JNNFT*MTczODg2NzU4Ny4yLjEuMTczODg2OTY2Mi40Mi4wLjA.#eyJhcHBpZCI6NzAsInN0ZXBzIjpbMSwyOSwyNSwzMSwyNiwyNywzMF0sImRhdGEiOltbIlRhYmxlSWQiLCI2MDAiXSxbIk1ham9yX0FyZWEiLCIwIl0sWyJTdGF0ZSIsWyIwIl1dLFsiQXJlYSIsWyJYWCJdXSxbIlN0YXRpc3RpYyIsWyI0IiwiNSIsIjYiLCI3Il1dLFsiVW5pdF9vZl9tZWFzdXJlIiwiTGV2ZWxzIl0sWyJZZWFyIixbIjIwMjMiLCIyMDIyIiwiMjAyMSIsIjIwMjAiLCIyMDE5IiwiMjAxOCIsIjIwMTciLCIyMDE2IiwiMjAxNSIsIjIwMTQiLCIyMDEzIiwiMjAxMiJdXSxbIlllYXJCZWdpbiIsIi0xIl0sWyJZZWFyX0VuZCIsIi0xIl1dfQ==)
-* [Rozkład dochodów w USA](https://apps.bea.gov/iTable/?reqid=19&step=2&isuri=1&categories=survey&_gl=1*1b47ue7*_ga*MTY3NzgyODgwOC4xNzM4ODYzNjI0*_ga_J4698JNNFT*MTczODg2NzU4Ny4yLjEuMTczODg2NzkzNS4xNS4wLjA.#eyJhcHBpZCI6MTksInN0ZXBzIjpbMSwyLDMsM10sImRhdGEiOltbImNhdGVnb3JpZXMiLCJTdXJ2ZXkiXSxbIk5JUEFfVGFibGVfTGlzdCIsIjQyOSJdLFsiRmlyc3RfWWVhciIsIjIwMTIiXSxbIkxhc3RfWWVhciIsIjIwMjMiXSxbIlNjYWxlIiwiMCJdLFsiU2VyaWVzIiwiQSJdXX0=)
-* [Rozporządzalny dochód osobisty dla poszczególnych stanów w USA](https://apps.bea.gov/itable/?ReqID=70&step=1&_gl=1*85fq81*_ga*MTY3NzgyODgwOC4xNzM4ODYzNjI0*_ga_J4698JNNFT*MTczODg2NzU4Ny4yLjEuMTczODg2OTY2Mi40Mi4wLjA.#eyJhcHBpZCI6NzAsInN0ZXBzIjpbMSwyOSwyNSwzMSwyNiwyNywzMF0sImRhdGEiOltbIlRhYmxlSWQiLCI2MDAiXSxbIk1ham9yX0FyZWEiLCIwIl0sWyJTdGF0ZSIsWyIwIl1dLFsiQXJlYSIsWyIwMTAwMCIsIjAyMDAwIiwiMDQwMDAiLCIwNTAwMCIsIjA2MDAwIiwiMDgwMDAiLCIwOTAwMCIsIjEwMDAwIiwiMTEwMDAiLCIxMjAwMCIsIjEzMDAwIiwiMTUwMDAiLCIxNjAwMCIsIjE3MDAwIiwiMTgwMDAiLCIxOTAwMCIsIjIwMDAwIiwiMjEwMDAiLCIyMjAwMCIsIjIzMDAwIiwiMjQwMDAiLCIyNTAwMCIsIjI2MDAwIiwiMjcwMDAiLCIyODAwMCIsIjI5MDAwIiwiMzAwMDAiLCIzMTAwMCIsIjMyMDAwIiwiMzMwMDAiLCIzNDAwMCIsIjM1MDAwIiwiMzYwMDAiLCIzNzAwMCIsIjM4MDAwIiwiMzkwMDAiLCI0MDAwMCIsIjQxMDAwIiwiNDIwMDAiLCI0NDAwMCIsIjQ1MDAwIiwiNDYwMDAiLCI0NzAwMCIsIjQ4MDAwIiwiNDkwMDAiLCI1MDAwMCIsIjUxMDAwIiwiNTMwMDAiLCI1NDAwMCIsIjU1MDAwIiwiNTYwMDAiXV0sWyJTdGF0aXN0aWMiLFsiMTEiXV0sWyJVbml0X29mX21lYXN1cmUiLCJMZXZlbHMiXSxbIlllYXIiLFsiMjAyMyIsIjIwMjIiLCIyMDIxIiwiMjAyMCIsIjIwMTkiLCIyMDE4IiwiMjAxNyIsIjIwMTYiLCIyMDE1IiwiMjAxNCIsIjIwMTMiLCIyMDEyIl1dLFsiWWVhckJlZ2luIiwiLTEiXSxbIlllYXJfRW5kIiwiLTEiXV19)
-
-## Analiza
+## Data
+The data used in this project comes from The Bureau of Economic Analysis (BEA). You can find the raw files in the repository.
+## Results
+Key findings:
+* **Basic necessities**: expenditures on food and energy goods remains at a relatively similar level across all the states,
+* **Housing**: housing costs differ significantly from state to state,
+* **Healthcare**: healthcare spending is consistently high regardless of the state, which may act as a barrier to proper treatment for lower-income groups.
+* **Wealth inequality**: housing and healthcare expenditures are the primary drivers for inequality. The Lorenz Curve, which illustrates the wealth distribution in USA, supports that statement.
